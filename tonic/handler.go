@@ -9,8 +9,8 @@ import (
 	"sync"
 
 	"github.com/gin-gonic/gin"
+	validator "github.com/go-playground/validator/v10"
 	"github.com/google/uuid"
-	validator "gopkg.in/go-playground/validator.v9"
 )
 
 var (
@@ -160,8 +160,9 @@ func RegisterValidation(tagName string, validationFunc validator.Func) error {
 //            return ""
 //        }
 //        return name
-//    }
+//    })
 func RegisterTagNameFunc(registerTagFunc validator.TagNameFunc) {
+	initValidator()
 	validatorObj.RegisterTagNameFunc(registerTagFunc)
 }
 
